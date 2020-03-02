@@ -19,7 +19,7 @@ class Home extends Component {
         API.searchBooks(String(this.state.search))
             .then(res => {
                 if (res.data.status === "error") {
-                    var result = [{
+                    var results = [{
                         id: "",
                         title: "",
                         author: [],
@@ -31,18 +31,18 @@ class Home extends Component {
                 }
                 else {
                     var results = res.data.items
-                    results = results.map(result => {
-                        results = {
+                    var books = results.map(result => {
+                      var book = {
                             id: result.id,
                             title: result.volumeInfo.title,
                             authors: result.volumeInfo.authors,
-                            description: result.volumeInfo.description === underfined ? "No description" : result.volumeInfo.description,
+                            description: result.volumeInfo.description === undefined ? "No description" : result.volumeInfo.description,
                             image: result.volumeInfo.imageLinks === undefined ? "NoImage.jpg" : result.volumeInfo.imageLinks.thumbnail,
                             link: result.volumeInfo.infoLink,
                         }
-                        return result;
+                        return book;
                     })
-                    this.setState({ books: results });
+                    this.setState({ books: books });
                 }
             })
             .catch(err => console.log(err));

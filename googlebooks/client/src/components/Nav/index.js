@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
+// import "./style.css";
 
 function Nav() {
     return (
@@ -9,11 +9,11 @@ function Nav() {
             <div>
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <link to="/" className={window.location.pathname === "/" 
-                            ? "nav-link active":"nav-link"}>Search</link>
+                        <Link to="/" className={window.location.pathname === "/" 
+                            ? "nav-link active":"nav-link"}>Search</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/saved" className={window.locations.pathname === "/saved"
+                        <Link to="/saved" className={window.location.pathname === "/saved"
                             ? "nav-link active":"nav-link"}>Saved</Link>
                     </li>
                 </ul>

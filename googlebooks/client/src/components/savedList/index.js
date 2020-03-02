@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+// import "./style.css";
 
 function savedList(props) {
     return(
@@ -15,8 +15,8 @@ function savedList(props) {
                                 <h2>{bookData.title}</h2>
                                 <p>{bookData.authors}</p>
                                 <p>{bookData.description}</p>
-                                <Button className="deleteButton" key={bookData.id} id={bookData._id} onClick={(event) => props.handleDeleteButton(bookData._id)}>Delete</Button>
-                                <button><a className="viewButton" href={bookdata.link} target="_blank" rel="noopener noreferrer">View</a></button>
+                                <button className="deleteButton" key={bookData.id} id={bookData._id} onClick={(event) => props.handleDeleteButton(bookData._id)}>Delete</button>
+                                <button><a className="viewButton" href={bookData.link} target="_blank" rel="noopener noreferrer">View</a></button>
                             </div>
                         </div>
                     </div>

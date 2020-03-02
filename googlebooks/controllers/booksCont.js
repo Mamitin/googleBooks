@@ -8,21 +8,28 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.static(422).json(err));
     },
-    findbyID: function(req, res) {
+    findByID: function(req, res) {
         db.Book
-        .findByID(req.params.id)
+        .findById(req.params.id)
         .then(dbmodel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
-    creat: function(req, res) {
+    create: function(req, res) {
         db.Book
             .create(req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    update: function(req,res) {
+        db.Book
+        .findByIdAndUpdate({_id: req.params.id}, req.body)
+        // .then(dbModel => dbModel.())
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
     remove: function(req, res) {
         db.Book
-            .findByID({_id: req.params.id})
+            .findById({_id: req.params.id})
             .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

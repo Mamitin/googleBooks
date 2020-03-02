@@ -1,5 +1,5 @@
-import react from "react";
-import "./style.css";
+import React from "react";
+// import "./style.css";
 
 function Form(props) {
     return (
@@ -8,14 +8,14 @@ function Form(props) {
                 <input className="form-control"
                     id="title"
                     type="text"
-                    value={q}
+                    value={props.search}
                     placeholder="Book Search"
                     name="q"
                     onChange={props.handleInputChange} />
             </div>
             <div>
                 <button
-                    onClick={handleFormSubmit}
+                    onClick={props.handleFormSubmit}
                     type="submit"
                     className="btn btn-lg btn-info">
                 </button>
