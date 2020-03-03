@@ -3,6 +3,7 @@ import List from "./../components/List";
 import Container from "../components/Container";
 import Form from "../components/Form"
 import API from "../utils/API";
+import Book from "../components/Book";
 
 class Home extends Component {
     state = {
@@ -32,7 +33,7 @@ class Home extends Component {
                 else {
                     var results = res.data.items
                     var books = results.map(result => {
-                      var book = {
+                        var book = {
                             id: result.id,
                             title: result.volumeInfo.title,
                             authors: result.volumeInfo.authors,
@@ -48,14 +49,20 @@ class Home extends Component {
             .catch(err => console.log(err));
     };
 
-    handleSavedButton = event => {
-        event.preventDefault();
-        var bookData = this.state.books.filter(book => book.id === event.target.id);
-        bookData = bookData[0];
-        API.saveBook(bookData)
-            .then(function (data) {
-                alert("Saved!");
-            });
+    handleSavedButton = id => {
+        // event.preventDefault();
+        var bookData = this.state.books.find(book => book.id === id);
+
+        API.saveBook({
+            bookId: bookData.id,
+            
+        })
+        // bookData = bookData[0];
+        // API.saveBook(bookData)
+            // .then(data => console.log(data));
+        // .then(function (data) {
+        // alert("Saved!");
+        // });
     }
 
     render() {
@@ -70,7 +77,24 @@ class Home extends Component {
                         handleFormSubmit={this.handleFormSubmit}
                         handleInputChange={this.handleInputChange}
                     ></Form>
-                    <List books={this.state.books} handleSavedButton={this.handleSavedButton}></List>
+                    {/* <List books={this.state.books} handleSavedButton={this.handleSavedButton}></List> */}
+                    <List>
+                        {this.state.books.map(book =>
+                            <Book
+                                key={book.id}
+                                title={book.title}
+                                subtitle={book.subtitle}
+                                link={book.link}
+                                authors={book.authors.join(", ")}
+                                description={book.description}
+                                image={book.image}
+                                Button={() => (
+                                    <button className="saveButton" onClick={() => this.handleSavedButton(book.id)}>Save</button>
+                                    // <button><a className="viewButton" href={book.volumeInfo.infoLink} target="_blank" rel="noopener noreferrer">View</a></button>
+                                )}
+                            />
+                        )}
+                    </List>
                 </div>
             </div>
         );
