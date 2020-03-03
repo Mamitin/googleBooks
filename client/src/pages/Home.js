@@ -55,15 +55,15 @@ class Home extends Component {
 
         API.saveBook({
             bookId: bookData.id,
-            
-        })
-        // bookData = bookData[0];
-        // API.saveBook(bookData)
-            // .then(data => console.log(data));
-        // .then(function (data) {
-        // alert("Saved!");
-        // });
-    }
+            title: bookData.title,
+            subtitle: bookData.subtitle,
+            link: bookData.infoLink,
+            authors: bookData.authors,
+            description: bookData.description,
+            image: bookData.image
+        }).then(() => console.log("Testing"))
+        
+    };
 
     render() {
         return (
@@ -90,7 +90,6 @@ class Home extends Component {
                                 image={book.image}
                                 Button={() => (
                                     <button className="saveButton" onClick={() => this.handleSavedButton(book.id)}>Save</button>
-                                    // <button><a className="viewButton" href={book.volumeInfo.infoLink} target="_blank" rel="noopener noreferrer">View</a></button>
                                 )}
                             />
                         )}

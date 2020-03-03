@@ -1,4 +1,3 @@
- 
 {
   "name": "mern",
   "version": "1.0.0",
@@ -28,5 +27,14 @@
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mamitin/googleBooks.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Mamitin/googleBooks/issues"
+  },
+  "homepage": "https://github.com/Mamitin/googleBooks#readme"
 }
