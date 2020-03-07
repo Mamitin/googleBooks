@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-import Container from "./../components/savedList";
-import savedList from "./../components/savedList";
+import Container from "./../components/Container";
+import SavedList from "./../components/savedList";
 import API from "../utils/API";
 
 class Saved extends Component {
     state = { bookData: [] };
 
     componentDidMount() {
-        API.getBook()
-            .then(res => this.setState({ bookData: res.data }))
+        API.getBooks()
+            .then(res => {
+                this.setState({ bookData: res.data })
+                console.log(this.state.bookData);
+            })
             .catch(err => console.log(err))
     }
 
@@ -24,10 +27,8 @@ class Saved extends Component {
                 <Container>
                     <h1>Google Book Search</h1>
                     <h2>Saved Books</h2>
+                    <SavedList bookData={this.state.bookData} handleDeleteButton={this.handleDeleteButton} />
                 </Container>
-                <div className="container">
-                    <savedList bookData={this.state.bookData} handleDeleteButton={this.handleDeleteButton} />
-                </div>
             </div>
         );
     }
