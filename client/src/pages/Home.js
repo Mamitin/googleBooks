@@ -50,7 +50,6 @@ class Home extends Component {
     };
 
     handleSavedButton = id => {
-        // event.preventDefault();
         var bookData = this.state.books.find(book => book.id === id);
 
         API.saveBook({
@@ -77,7 +76,6 @@ class Home extends Component {
                         handleFormSubmit={this.handleFormSubmit}
                         handleInputChange={this.handleInputChange}
                     ></Form>
-                    {/* <List books={this.state.books} handleSavedButton={this.handleSavedButton}></List> */}
                     <List>
                         {this.state.books.map(book =>
                             <Book
